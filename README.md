@@ -96,3 +96,8 @@ export default {
 ```
 
 -   restart the project
+
+#### Dependencies and Packages
+
+-   react-icons
+-   rect-router-dom
