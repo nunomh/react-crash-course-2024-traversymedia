@@ -101,3 +101,5 @@ export default {
 
 -   react-icons
 -   rect-router-dom
+-   json-server - for mock data
+-   react-spinners
