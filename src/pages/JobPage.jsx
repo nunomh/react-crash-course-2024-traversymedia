@@ -1,12 +1,16 @@
+/* eslint-disable react/prop-types */
 // import { useState, useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 // import Spinner from '../components/Spinner';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const JobPage = () => {
+const JobPage = ({ deleteJob }) => {
     // const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const job = useLoaderData();
 
@@ -29,6 +33,14 @@ const JobPage = () => {
     //     };
     //     fetchJob();
     // });
+
+    const onDeleteClick = jobId => {
+        const confirm = window.confirm('Are you sure you want to delete this job?');
+        if (!confirm) return;
+        deleteJob(jobId);
+        toast.success('Job deleted successfully');
+        navigate('/jobs');
+    };
 
     return (
         <>
@@ -94,7 +106,10 @@ const JobPage = () => {
                                 >
                                     Edit Job
                                 </Link>
-                                <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block">
+                                <button
+                                    onClick={() => onDeleteClick(job.id)}
+                                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                                >
                                     Delete Job
                                 </button>
                             </div>

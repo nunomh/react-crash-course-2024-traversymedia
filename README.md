@@ -103,3 +103,4 @@ export default {
 -   rect-router-dom
 -   json-server - for mock data
 -   react-spinners
+-   react-toastify
